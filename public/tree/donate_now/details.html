@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree Plantation Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #f0faff, #d1e6ff, #b3d3ff, #94c0ff, #75adff);
+            background-size: cover;
+            height: 100vh;
+        }
+        .navbar {
+            position: fixed;
+            height: 120px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(157, 228, 85, 0.726);
+        }
+        .navbar .logo {
+            width: 110px;
+            height: auto;
+            position: absolute;
+            left: 2%;
+            top: 5%;
+        }
+        .navbar ul {
+            float: right;
+            margin-right: 20px;
+        }
+        .navbar ul li {
+            list-style: none;
+            margin: 0 8px;
+            display: inline-block;
+            line-height: 80px;
+            padding: 8px;
+        }
+        .navbar ul li a {
+            font-size: 30px;
+            font-family: serif;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            padding: 6px 13px;
+            text-decoration: none;
+            transition: .3s;
+        }
+        .navbar ul li a.active, .navbar ul li a:hover {
+            background: rgb(49, 198, 46);
+            border-radius: 20px;
+        }
+        .container {
+            margin-top: 150px;
+            text-align: center;
+            width: 500px;
+        }
+        .header {
+            font-size: 2em;
+        }
+        .subtitle {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img class="logo" src="logo.png">
+        <ul>
+            <li><a href="../../../public/index.html">Home</a></li>
+            <li><a href="../donate_now/previous_orders.html">Your Donations</a></li>
+            <li><a href="../../../public/index.html#about">About</a></li>
+            <a href="../account/account.html"><img width="70" height="70" src="https://img.icons8.com/avantgarde/100/test-account.png" alt="test-account"/>	</a>	
+
+        </ul>
+    </nav>
+    <center>
+        <div class="container">
+            <h1 class="header">Hi, <span id="userName"></span>!</h1>
+            <p class="subtitle">Here are your tree plantation details:</p>
+            <p>Number of Trees: <span id="noOfTrees"></span></p>
+            <p>Tree Type: <span id="treeType"></span></p>
+            <p>Planting Area (in sq. mtrs): <span id="area"></span></p>
+            <p>Total Price: $<span id="totalPrice"></span></p>
+        </div><br><br>
+        <button id="payNowButton" style="width: 100px; height: 30px; border-radius: 30px; background-color: rgb(238, 125, 33); cursor: pointer;">Pay Now</button>
+    </center> 
+
+    <script>
+        // Function to get query parameters
+        function getQueryParams() {
+            const params = {};
+            window.location.search.substring(1).split('&').forEach(param => {
+                const [key, value] = param.split('=');
+                params[decodeURIComponent(key)] = decodeURIComponent(value);
+            });
+            return params;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Get query parameters
+            const params = getQueryParams();
+
+            // Set the details
+            const userName = params.name;
+            const noOfTrees = parseInt(params.noOfTrees, 10) || 0;
+            const treeType = params.treeType;
+            const area = params.area;
+
+            // Price calculation based on tree type
+            let pricePerTree;
+            switch (treeType) {
+                case "Mango":
+                    pricePerTree = 60.00;
+                    break;
+                case "Jamun":
+                    pricePerTree = 80.00;
+                    break;
+                case "Ashoka Tree":
+                    pricePerTree = 90.00;
+                    break;
+                default:
+                    pricePerTree = 20.00;
+            }
+            const totalPrice = pricePerTree * noOfTrees;
+
+            document.getElementById('userName').textContent = userName;
+            document.getElementById('noOfTrees').textContent = noOfTrees;
+            document.getElementById('treeType').textContent = treeType;
+            document.getElementById('area').textContent = area;
+            document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+
+            // Save data to localStorage and redirect to previous orders page
+            document.getElementById('payNowButton').addEventListener('click', () => {
+                const orderDetails = {
+                    name: userName,
+                    noOfTrees,
+                    treeType,
+                    area,
+                    totalPrice: totalPrice.toFixed(2)
+                };
+                localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+                window.location.href = 'previous_orders.html';
+            });
+        });
+    </script>
+</body>
+</html>

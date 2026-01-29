@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+*{
+	padding: 0;
+	margin: 0;
+}
+
+  
+.wrapper{
+	background: url(../assets/images.jpg) no-repeat;
+	background-color: rgb(234, 255, 255);
+	background-size: cover;
+	height: 100vh;
+}
+.navbar{
+
+	height: 120px;
+	width: 100%;
+	background: rgba(132, 220, 44, 0.408);
+}
+
+
+.logo{
+	width: 110px;
+	left: 2%;
+	top: 3%;
+	position:fixed;
+}
+.navbar ul{
+	float: right;
+	margin-right: 20px;
+}
+.navbar ul li{
+	list-style: none;
+	margin: 0 8px;
+	display: inline-block;
+	line-height: 80px;
+	padding: 8px;
+
+
+}
+.navbar ul li a{
+	font-size: 25px;
+	font-family: 'Roboto', sans-serif;
+	color: rgb(0, 0, 0);
+	padding: 6px 13px;
+	text-decoration: none;
+	transition: .3s;
+}
+.navbar ul li a.active{
+	background: rgb(49, 198, 46);
+	border-radius: 20px;
+}
+.navbar ul li a:hover{
+	background: rgb(49, 198, 46);
+	border-radius: 20px;
+}
+.wrapper .center{
+	position: absolute;
+	left: 35%;
+	top: 55%;
+	transform: translate(-50%, -50%);
+	font-family: sans-serif;
+	user-select: none;
+}
+.center h1{
+	color: rgb(0, 0, 0);
+	font-size: 70px;
+	width: 900px;
+	font-weight: bold;
+	text-align: left;
+}
+.center h2{
+	color: rgb(12, 147, 9);
+	font-size: 40px;
+	font-weight: bold;
+	margin-top: 10px;
+	width: 885px;
+	text-align: left;
+	position: absolute;
+	left: 10%;
+}
+
+button{
+	height: 50px;
+	width: 150px;
+	
+	font-size: 18px;
+	font-weight: 600;
+	color: #000000;
+	background: rgb(68, 231, 65);
+	outline:#000000;
+	cursor: pointer;
+	border: 1px solid #000000;
+	border-radius: 25px;
+	transition: .4s;
+	position: absolute;
+	left: 25%;
+	
+}
+
+button:hover{
+	background: #f4b820a5;
+}
+
+
+.ig{
+	width: 20px;
+	position: absolute;
+	right: 35%;
+	top: 25%;
+}
+.flx{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+

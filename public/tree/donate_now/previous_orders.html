@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previous Orders</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #f0faff, #d1e6ff, #b3d3ff, #94c0ff, #75adff);
+            background-size: cover;
+            height: 100vh;
+        }
+        .navbar {
+            position: fixed;
+            height: 120px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(157, 228, 85, 0.726);
+        }
+        .navbar .logo {
+            width: 110px;
+            height: auto;
+            position: absolute;
+            left: 2%;
+            top: 5%;
+        }
+        .navbar ul {
+            float: right;
+            margin-right: 20px;
+        }
+        .navbar ul li {
+            list-style: none;
+            margin: 0 8px;
+            display: inline-block;
+            line-height: 80px;
+            padding: 8px;
+        }
+        .navbar ul li a {
+            font-size: 30px;
+            font-family: serif;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            padding: 6px 13px;
+            text-decoration: none;
+            transition: .3s;
+        }
+        .navbar ul li a.active, .navbar ul li a:hover {
+            background: rgb(49, 198, 46);
+            border-radius: 20px;
+        }
+        .container {
+            margin-top: 150px;
+            text-align: center;
+            width: 500px;
+        }
+        .header {
+            font-size: 2em;
+        }
+        .subtitle {
+            margin-top: 20px;
+        }
+        .cancel-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff4c4c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img class="logo" src="logo.png">
+        <ul>
+            <li><a href="../../../public/index.html">Home</a></li>
+            <li><a href="../donate_now/previous_orders.html">Your Donations</a></li>
+            <li><a href="../../../public/index.html#about">About</a></li>
+            <a href="../account/account.html"><img width="70" height="70" src="https://img.icons8.com/avantgarde/100/test-account.png" alt="test-account"/></a>    
+        </ul>
+    </nav>
+    <center>
+        <div class="container">
+            <h1 class="header">Previous Orders</h1>
+            <div id="orderDetails">
+                <!-- Order details will be displayed here -->
+            </div>
+            <button id="cancelOrderButton" class="cancel-button" style="display:none;">Cancel Order</button>
+        </div>
+    </center> 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+
+            const orderDetailsDiv = document.getElementById('orderDetails');
+            const cancelOrderButton = document.getElementById('cancelOrderButton');
+
+            if (orderDetails) {
+                orderDetailsDiv.innerHTML = `
+                    <p>Name: ${orderDetails.name}</p>
+                    <p>Number of Trees: ${orderDetails.noOfTrees}</p>
+                    <p>Tree Type: ${orderDetails.treeType}</p>
+                    <p>Planting Area (in sq. mtrs): ${orderDetails.area}</p>
+                    <p>Total Price: $${orderDetails.totalPrice}</p>
+                `;
+                cancelOrderButton.style.display = 'block';
+            } else {
+                orderDetailsDiv.innerHTML = `
+                    <p>No previous orders have been placed by the user.</p>
+                `;
+            }
+
+            cancelOrderButton.addEventListener('click', () => {
+                localStorage.removeItem('orderDetails');
+                orderDetailsDiv.innerHTML = `
+                    <p>No more orders present.</p>
+                `;
+                cancelOrderButton.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

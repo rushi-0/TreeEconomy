@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>account</title>
+    <style>
+        body {
+            padding: 30px;
+            margin: 0;
+            background: linear-gradient(to bottom right, #f0faff, #d1e6ff, #b3d3ff, #94c0ff, #75adff);
+            height: 94vh;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        button {
+            color: rgb(1, 1, 2);
+            background-color: #7ffa33;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+        }
+        button:hover {
+            color: rgb(0, 0, 0);
+            background-color: rgb(238, 174, 35);
+            cursor: pointer;
+        }
+        .content, .acc_card, button {
+            margin-left: 4%;
+            font-size: 1rem;
+        }
+        .acc_card {
+            padding: 10px;
+            font-weight: 400;
+            color: rgb(12, 11, 11);
+            background-color: rgb(174, 229, 229);
+            border: 2px solid;
+            width: 90%;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        span {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: black;
+        }
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(157, 228, 85, 0.726);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-sizing: border-box;
+        }
+        .navbar .logo {
+            width: 80px;
+            height: auto;
+        }
+        .navbar ul {
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar ul li {
+            list-style: none;
+            margin: 0 8px;
+        }
+        .navbar ul li a {
+            font-size: 1.2rem;
+            font-family: serif;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            padding: 6px 13px;
+            text-decoration: none;
+            transition: .3s;
+            display: block;
+        }
+        .navbar ul li a.active,
+        .navbar ul li a:hover {
+            background: rgb(49, 198, 46);
+            border-radius: 20px;
+        }
+        .acc_card div {
+            margin-bottom: 10px;
+        }
+        .acc_card button {
+            display: flex;
+            align-items: center;
+        }
+        .acc_card button img {
+            margin-left: 5px;
+        }
+        @media (max-width: 768px) {
+            .navbar .logo {
+                width: 60px;
+            }
+            .navbar ul li a {
+                font-size: 1rem;
+            }
+            .acc_card {
+                width: 80%;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            .content {
+                padding: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .navbar ul li {
+                margin: 5px 0;
+            }
+            .navbar ul li a {
+                font-size: 0.9rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+                margin-left: 4%;
+            }
+        }
+    </style>
+    <script type="module" src="account.js"></script>
+</head>
+<body>
+
+<div class="content">
+    <nav class="navbar">
+        <img class="logo" src="logo.png">
+        <ul>
+            <li><a href="../../../public/index.html">Home</a></li>
+            <li><a href="../donate_now/donate.html">Donate Now</a></li>
+            <li><a href="../donate_now/previous_orders.html">Your Donations</a></li>
+            <li><a href="../../../public/index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+    <br><br><br><br>
+
+    <h1>Your Account</h1>
+    <div class="acc_card"><br>
+        <div>First Name: <span id="loggedUserFName"></span></div>
+        <div>Last Name: <span id="loggedUserLName"></span></div>
+        <div>Email: <span id="loggedUserEmail"></span></div><br></div>
+    <center><button id="logout">Logout <img width="20" height="20" src="https://img.icons8.com/plumpy/24/exit.png" alt="exit"/></button></center>    
+    
+</div>
+</body>
+</html>
